@@ -8,6 +8,7 @@ class DashboardController extends Controller
 {
     public function index()
     {
-        return view('dashboard.index');
+        $title = __('header.dashboard.index');
+        return view('dashboard.index', compact('title'));
     }
 }
