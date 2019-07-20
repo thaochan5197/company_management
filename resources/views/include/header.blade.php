@@ -229,8 +229,13 @@
                                         </ul>
                                         <ul>
                                             <li><a href="#"><i class="zmdi zmdi-settings"></i>Setting</a></li>
-                                            <li><a href="#"><i class="zmdi zmdi-lock-open"></i>Sing out</a></li>
+                                            <li><a href="#" onclick="event.preventDefault();
+                                                document.getElementById('logout').submit();
+                                            "><i class="zmdi zmdi-lock-open"></i>Sing out</a></li>
                                         </ul>
+                                        <form action="{{ route('logout') }}" method="post" id="logout">
+                                            {{ csrf_field() }}
+                                        </form>
                                         <ul>
                                             <li><a href="#"><i class="zmdi zmdi-paypal"></i>Payment</a></li>
                                             <li><a href="#"><i class="zmdi zmdi-google-pages"></i>Invoice</a></li>
@@ -258,7 +263,7 @@
 
         <nav class="side-header-menu" id="side-header-menu">
             <ul>
-                <li><a href="{{ route('dashboard.index') }}"><i class="ti-home"></i> <span>{{ __('header.dashboard.index') }}</span></a></li>
+                <li><a href="{{ route('home') }}"><i class="ti-home"></i> <span>{{ __('header.dashboard.index') }}</span></a></li>
                 <li class="has-sub-menu"><a href="#"><i class="ti-package"></i> <span>{{ __('header.product') }}</span></a>
                     <ul class="side-header-sub-menu">
                         <li><a href="{{ route('product.index') }}"><span>{{ __('header.product.index') }}</span></a></li>

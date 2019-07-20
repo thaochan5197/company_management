@@ -12,15 +12,14 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return redirect()->route('home');
 });
 
 
 Auth::routes();
 
-Route::group(['middleware' => 'locale'], function() {
+Route::middleware(['locale', 'auth'])->group(function() {
     Route::get('change-language/{language}', 'HomeController@ChangeLanguage')->name('user.change-language');
-    Route::get('/home', 'HomeController@index')->name('home');
-    Route::get('/dashboard', 'DashboardController@index')->name('dashboard.index');
+    Route::get('/dashboard', 'DashboardController@index')->name('home');
     Route::get('/product', 'ProductController@index')->name('product.index');
 });
