@@ -5,7 +5,7 @@
                 {{ __('product.them_moi') }}
             </button>
             <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                <a class="dropdown-item" href="#">{{ __('product.san_pham') }}</a>
+                <a class="dropdown-item" href="#" data-toggle="modal" data-target=".bd-example-modal-lg">{{ __('product.san_pham') }}</a>
             </div>
         </div>
     </div>
@@ -24,6 +24,17 @@
             </button>
             <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                 <a class="dropdown-item" href="#">AAAÂ</a>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col">
+        <div class="modal fade bd-example-modal-lg mt-100" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    ...
+                </div>
             </div>
         </div>
     </div>
