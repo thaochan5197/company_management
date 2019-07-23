@@ -7,8 +7,7 @@
  */
 
 return [
-    'them_moi' => 'Thêm mới',
-    'san_pham' => 'Sản phẩm',
     'filter.category' => 'Lọc theo danh mục',
-    'filter.bao_hanh' => 'Lọc theo bảo hành'
+    'filter.bao_hanh' => 'Lọc theo bảo hành',
+    'filter.them_moi' => 'Thêm mới sản phẩm'
 ];
