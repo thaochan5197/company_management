@@ -8,7 +8,7 @@ class ProductController extends Controller
 {
     public function index()
     {
-        $title = __('header.product');
+        $title = __('common.product');
         return view('product.index', compact('title'));
     }
 }
