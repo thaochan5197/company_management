@@ -21,4 +21,5 @@ Auth::routes();
 Route::middleware(['locale', 'auth'])->group(function() {
     Route::get('/dashboard', 'DashboardController@index')->name('home');
     Route::get('/product', 'ProductController@index')->name('product.index');
+    Route::get('/post/add', 'PostController@add')->name('post.add');
 });

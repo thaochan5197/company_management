@@ -12,4 +12,5 @@ return [
 
     // list
     'product' => 'Sản phẩm',
+    'post' => 'Tin tức'
 ];

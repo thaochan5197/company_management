@@ -264,12 +264,9 @@
         <nav class="side-header-menu" id="side-header-menu">
             <ul>
                 <li><a href="{{ route('home') }}"><i class="ti-home"></i> <span>{{ __('header.dashboard.index') }}</span></a></li>
-                <li class="has-sub-menu"><a href="#"><i class="ti-package"></i> <span>{{ __('header.product') }}</span></a>
+                <li class="has-sub-menu"><a href="#"><i class="ti-package"></i> <span>{{ __('common.post') }}</span></a>
                     <ul class="side-header-sub-menu">
-                        <li><a href="{{ route('product.index') }}"><span>{{ __('header.product.index') }}</span></a></li>
-                        <li><a href="elements-accordions.html"><span>{{ __('header.product.bang_gia') }}</span></a></li>
-                        <li><a href="elements-avatar.html"><span>{{ __('header.product.phieu_bao_hanh') }}</span></a></li>
-                        <li><a href="elements-badge.html"><span>{{ __('header.product.phieu_kiem_kho') }}</span></a></li>
+                        <li><a href="{{ route('post.add') }}"><span>{{ __('header.post.them_moi') }}</span></a></li>
                     </ul>
                 </li>
             </ul>
