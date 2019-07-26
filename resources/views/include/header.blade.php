@@ -266,7 +266,7 @@
                 <li><a href="{{ route('home') }}"><i class="ti-home"></i> <span>{{ __('header.dashboard.index') }}</span></a></li>
                 <li class="has-sub-menu"><a href="#"><i class="ti-package"></i> <span>{{ __('common.post') }}</span></a>
                     <ul class="side-header-sub-menu">
-                        <li><a href="{{ route('post.add') }}"><span>{{ __('header.post.them_moi') }}</span></a></li>
+                        <li><a href="{{ route('post.add') }}"><span>{{ __('common.add') }}</span></a></li>
                     </ul>
                 </li>
             </ul>
