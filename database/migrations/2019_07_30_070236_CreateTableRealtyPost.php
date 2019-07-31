@@ -23,7 +23,6 @@ class CreateTableRealtyPost extends Migration
             $table->integer('info');
             $table->text('other_info');
             $table->text('images');
-            $table->text('images');
             $table->string('contact_name');
             $table->string('contact_address');
             $table->string('contact_phone');
