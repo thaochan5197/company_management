@@ -12,5 +12,6 @@ return [
 
     // list
     'product' => 'Sản phẩm',
-    'post' => 'Tin tức'
+    'realty_post' => 'Tin nhà đất',
+    'category' => 'Danh mục'
 ];

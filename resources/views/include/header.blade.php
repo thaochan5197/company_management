@@ -264,9 +264,14 @@
         <nav class="side-header-menu" id="side-header-menu">
             <ul>
                 <li><a href="{{ route('home') }}"><i class="ti-home"></i> <span>{{ __('header.dashboard.index') }}</span></a></li>
-                <li class="has-sub-menu"><a href="#"><i class="ti-package"></i> <span>{{ __('common.post') }}</span></a>
+                <li class="has-sub-menu"><a href="#"><i class="ti-package"></i> <span>{{ __('common.realty_post') }}</span></a>
                     <ul class="side-header-sub-menu">
-                        <li><a href="{{ route('post.add') }}"><span>{{ __('common.add') }}</span></a></li>
+                        <li><a href="{{ route('realty_post.add') }}"><span>{{ __('common.add') }}</span></a></li>
+                    </ul>
+                </li>
+                <li class="has-sub-menu"><a href="#"><i class="fa fa-list"></i> <span>{{ __('common.category') }}</span></a>
+                    <ul class="side-header-sub-menu">
+                        <li><a href="{{ route('category.add') }}"><span>{{ __('common.add') }}</span></a></li>
                     </ul>
                 </li>
             </ul>
