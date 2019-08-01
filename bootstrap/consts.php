@@ -7,5 +7,10 @@ const CATEGORY_VIEW_ADD = 'category.add';
 
 //constant STATUS
 const STATUS_CATEGORY = [
-    ''
+    'draft' => 0,
+    'public' => 1
+];
+const TYPE_CATEGORY = [
+    'news' => 0,
+    'realty_post' => 1
 ];

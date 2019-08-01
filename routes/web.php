@@ -22,5 +22,6 @@ Route::middleware(['locale', 'auth'])->group(function() {
     Route::get('/dashboard', 'DashboardController@index')->name('home');
     Route::get('/product', 'ProductController@index')->name('product.index');
     Route::get('/post/add', 'RealtyPostController@add')->name('realty_post.add');
-    Route::get('/category/add', 'CategoryController@add')->name('category.add');
+    Route::get('/category/add', 'CategoryController@showForm')->name('category.add.show');
+    Route::post('/category/add', 'CategoryController@add')->name('category.add.action');
 });

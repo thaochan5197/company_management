@@ -50,8 +50,15 @@
     <div class="content-body">
 
     @include('include.breadcum')
+    <div class="row">
+        <div class="col-md-8">
+            @yield('content')
+        </div>
+        <div class="col-md-4">
 
-    @yield('content')
+        </div>
+    </div>
+
     </div><!-- Content Body End -->
 
     <!-- Footer Section Start -->

@@ -13,5 +13,17 @@ return [
     // list
     'product' => 'Sản phẩm',
     'realty_post' => 'Tin nhà đất',
-    'category' => 'Danh mục'
+    'news' => 'Tin tức',
+    
+    //text
+    'title' => 'Tiêu đề',
+    'status' => 'Trạng thái',
+    'category' => 'Danh mục',
+    'type' => 'Thể loại',
+    'update' => 'Cập nhật',
+    'save' => 'Lưu',
+    'edit' => 'Sửa',
+    'delete' => 'Xóa',
+    'draft' => 'Nháp',
+    'public' => 'Công khai',
 ];
