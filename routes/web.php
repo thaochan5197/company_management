@@ -23,5 +23,7 @@ Route::middleware(['locale', 'auth'])->group(function() {
     Route::get('/product', 'ProductController@index')->name('product.index');
     Route::get('/post/add', 'RealtyPostController@add')->name('realty_post.add');
     Route::get('/category/add', 'CategoryController@showForm')->name('category.add.show');
+    Route::get('/category/edit', 'CategoryController@showForm')->name('category.edit.show');
     Route::post('/category/add', 'CategoryController@add')->name('category.add.action');
+    Route::post('/category/edit', 'CategoryController@edit')->name('category.edit.action');
 });

@@ -8,23 +8,56 @@ use Illuminate\Http\Request;
 
 class CategoryController extends Controller
 {
-    public function showForm()
+
+    protected $category;
+    public function __construct()
+    {
+        $this->category = new Category;
+    }
+
+    public function showForm(Request $request)
     {
         $title = __('common.add') . ' ' . __('common.category');
-        return view(CATEGORY_VIEW_ADD, compact('title'));
+        // get list category
+        $editMode = false;
+        $infoCat = [];
+        $whereCat = [
+            'status' => STATUS_CATEGORY['public']
+        ];
+        $listCat = $this->category->getResult($whereCat);
+
+        if ($request->route()->named('category.edit.show')) {
+            $editMode = true;
+            $idRecord = $request->get('id');
+            $select = ['id'];
+            $where = ['id' => $idRecord];
+            $info = $this->category->getInfo($select, $where);
+            if ($info->exists()) {
+                $infoCat = $info->getAttributes();
+            }
+        }
+
+        //
+        return view(CATEGORY_VIEW_ADD, compact('title', 'listCat', 'editMode', 'infoCat', 'editMode'));
     }
     
     public function add(CategoryRequest $request)
     {
         $validate = $request->validate();
         if (is_null($validate)) {
-            $category = new Category;
-            $category->title = $request->input('title');
-            $category->status = $request->input('status');
-            $category->parent_id = $request->input('category');
-            $category->type = $request->input('type');
-            $category->save();
+
+            $this->category->title = $request->input('title');
+            $this->category->status = $request->input('status');
+            $this->category->parent_id = $request->input('category');
+            $this->category->type = $request->input('type');
+            $this->category->save();
             return redirect()->route('category.add.show');
         }
+    }
+
+    public function edit(CategoryRequest $request)
+    {
+        $validate = $request->validate();
+
     }
 }

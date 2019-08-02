@@ -12,5 +12,6 @@ const STATUS_CATEGORY = [
 ];
 const TYPE_CATEGORY = [
     'news' => 0,
-    'realty_post' => 1
+    'realty_sell' => 1,
+    'realty_buy' => 2,
 ];

@@ -18,4 +18,17 @@ class Category extends Model
      * @var bool
      */
     public $timestamps = true;
+
+    public function getResult($where)
+    {
+        return $this->where($where)
+            ->get();
+    }
+
+    public function getInfo($select, $where)
+    {
+        return $this->select($select)
+            ->where($where)
+            ->first();
+    }
 }
