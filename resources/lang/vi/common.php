@@ -13,6 +13,8 @@ return [
     // list
     'product' => 'Sản phẩm',
     'realty_post' => 'Tin nhà đất',
+    'realty_sell' => 'Bán nhà đất',
+    'realty_buy' => 'Mua nhà đất',
     'news' => 'Tin tức',
     
     //text
