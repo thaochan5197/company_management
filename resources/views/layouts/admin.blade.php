@@ -99,6 +99,7 @@
 <script src="{{ asset('/js/plugins/vmap/maps/jquery.vmap.world.js') }}"></script>
 <script src="{{ asset('/js/plugins/vmap/maps/samples/jquery.vmap.sampledata.js') }}"></script>
 <script src="{{ asset('/js/plugins/vmap/vmap.active.js') }}"></script>
+<script src="{{ asset('/js/scripts.js') }}"></script>
 
 </body>
 

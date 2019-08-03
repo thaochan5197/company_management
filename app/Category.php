@@ -25,8 +25,9 @@ class Category extends Model
      */
     public function getResult($where = [])
     {
-        return $this->where($where)
-            ->get()->toArray();
+        $query = $this->where($where)
+                ->get()->toArray();
+        return $query;
     }
     
     /**

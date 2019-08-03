@@ -26,16 +26,18 @@
         </div>
         <div class="form-group mb-15">
             <label for="">{{ __('common.category') }}</label>
-            <select class="form-control" name="parent_id">
+            <select class="form-control" name="parent_id" @if($editMode) {{ "disabled=true" }} @endif onchange="changeTypeByCat(this)" data-uri="{{ route('category.checkType') }}">
                 <option value="0">{{ __('category.default') }}</option>
-                @foreach($listCat as $key => $value)
-                    <option value="{{ $value['id'] }}" @if($editMode && $infoCat['parent_id'] == $value['id']){{ 'selected="selected"' }}@endif>{{ $value['title'] }}</option>
-                @endforeach
+                @if($editMode)
+                {{ getSubCategory($listCat, 'select', $infoCat['parent_id'], true) }}
+                    @else
+                    {{ getSubCategory($listCat, 'select') }}
+                    @endif
             </select>
         </div>
         <div class="form-group mb-15">
             <label for="">{{ __('common.type') }}</label>
-            <select class="form-control" name="type">
+            <select class="form-control" name="type" @if($editMode) {{ "disabled=true" }} @endif>
                 @foreach(TYPE_CATEGORY as $key => $value)
                     <option value="{{ $value }}" @if($editMode && $infoCat['type'] == $value){{ 'selected="selected"' }}@endif>{{ __('common.'.$key) }}</option>
                 @endforeach
