@@ -28,7 +28,6 @@ class CategoryController extends Controller
     {
         $title = __('common.list') . ' ' . __('common.category');
         $listCat = $this->category->getResult();
-        $this->renderSubCategory($listCat);
         return view(CATEGORY_VIEW_LIST, compact('title', 'listCat'));
     }
     
