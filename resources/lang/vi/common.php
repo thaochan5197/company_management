@@ -9,6 +9,7 @@
 return [
     //action
     'add' => 'Thêm mới',
+    'list' => 'Danh sách',
 
     // list
     'product' => 'Sản phẩm',
@@ -18,6 +19,7 @@ return [
     'news' => 'Tin tức',
     
     //text
+    'id' => 'ID',
     'title' => 'Tiêu đề',
     'status' => 'Trạng thái',
     'category' => 'Danh mục',
@@ -28,4 +30,6 @@ return [
     'delete' => 'Xóa',
     'draft' => 'Nháp',
     'public' => 'Công khai',
+    'created_at' => 'Tạo',
+    'updated_at' => 'Cập nhật',
 ];

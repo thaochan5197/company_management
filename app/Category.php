@@ -18,17 +18,38 @@ class Category extends Model
      * @var bool
      */
     public $timestamps = true;
-
-    public function getResult($where)
+    
+    /**
+     * @param array $where
+     * @return Category[]|\Illuminate\Database\Eloquent\Collection
+     */
+    public function getResult($where = [])
     {
         return $this->where($where)
-            ->get();
+            ->get()->toArray();
     }
-
+    
+    /**
+     * @param $select
+     * @param $where
+     * @return Category|Model|null
+     */
     public function getInfo($select, $where)
     {
         return $this->select($select)
             ->where($where)
             ->first();
     }
+    
+    /**
+     * @param $where
+     * @param $data
+     * @return bool
+     */
+    public function updateInfo($where, $data)
+    {
+        return $this->where($where['field'], $where['data'])
+            ->update($data);
+    }
+    
 }
