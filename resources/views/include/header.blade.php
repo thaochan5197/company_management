@@ -272,6 +272,7 @@
                 <li class="has-sub-menu"><a href="#"><i class="fa fa-list"></i> <span>{{ __('common.category') }}</span></a>
                     <ul class="side-header-sub-menu">
                         <li><a href="{{ route('category.add.show') }}"><span>{{ __('common.add') }}</span></a></li>
+                        <li><a href="{{ route('category.list') }}"><span>{{ __('common.list') }}</span></a></li>
                     </ul>
                 </li>
             </ul>

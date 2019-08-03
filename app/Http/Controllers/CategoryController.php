@@ -8,13 +8,34 @@ use Illuminate\Http\Request;
 
 class CategoryController extends Controller
 {
-
+    /**
+     * @var Category
+     */
     protected $category;
+    
+    /**
+     * CategoryController constructor.
+     */
     public function __construct()
     {
         $this->category = new Category;
     }
-
+    
+    /**
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
+    public function showList()
+    {
+        $title = __('common.list') . ' ' . __('common.category');
+        $listCat = $this->category->getResult();
+        $this->renderSubCategory($listCat);
+        return view(CATEGORY_VIEW_LIST, compact('title', 'listCat'));
+    }
+    
+    /**
+     * @param Request $request
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
     public function showForm(Request $request)
     {
         $title = __('common.add') . ' ' . __('common.category');
@@ -29,7 +50,7 @@ class CategoryController extends Controller
         if ($request->route()->named('category.edit.show')) {
             $editMode = true;
             $idRecord = $request->get('id');
-            $select = ['id'];
+            $select = ['*'];
             $where = ['id' => $idRecord];
             $info = $this->category->getInfo($select, $where);
             if ($info->exists()) {
@@ -41,23 +62,32 @@ class CategoryController extends Controller
         return view(CATEGORY_VIEW_ADD, compact('title', 'listCat', 'editMode', 'infoCat', 'editMode'));
     }
     
+    /**
+     * @param CategoryRequest $request
+     * @return \Illuminate\Http\RedirectResponse
+     */
     public function add(CategoryRequest $request)
     {
         $validate = $request->validate();
         if (is_null($validate)) {
-
-            $this->category->title = $request->input('title');
-            $this->category->status = $request->input('status');
-            $this->category->parent_id = $request->input('category');
-            $this->category->type = $request->input('type');
-            $this->category->save();
-            return redirect()->route('category.add.show');
+            $inData = $request->input();
+            if (isset($inData['_token'])) {
+                unset($inData['_token']);
+            }
+            foreach ($inData as $key => $value) {
+                $this->category->$key = $value;
+            }
+            if ($request->route()->named('category.add.action')) {
+                $this->category->save();
+            } elseif ($request->route()->named('category.edit.action')) {
+                $id = $request->get('id');
+                $where = ['field' => 'id', 'data' => $id];
+                $data = $this->category->getAttributes();
+                $result = $this->category->updateInfo($where, $data);
+            }
+            
+            return redirect()->route('category.list');
         }
     }
-
-    public function edit(CategoryRequest $request)
-    {
-        $validate = $request->validate();
-
-    }
+    
 }
