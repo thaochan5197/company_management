@@ -21,6 +21,11 @@ const TYPE_CATEGORY = [
     'realty_sell' => 1,
     'realty_buy' => 2,
 ];
+const TYPE_CAT_ID = [
+    0 => 'news',
+    1 => 'realty_sell',
+    2 => 'realty_buy'
+];
 const STATUS_COLOR = [
     STATUS_CATEGORY['draft'] => 'fa fa-lock text-danger',
     STATUS_CATEGORY['public'] => 'fa fa-globe text-primary',

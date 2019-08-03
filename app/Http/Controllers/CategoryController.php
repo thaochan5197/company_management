@@ -42,10 +42,10 @@ class CategoryController extends Controller
         $editMode = false;
         $infoCat = [];
         $whereCat = [
-            'status' => STATUS_CATEGORY['public']
+            ['status', '=', STATUS_CATEGORY['public']]
         ];
-        $listCat = $this->category->getResult($whereCat);
-
+        
+        //edit mode
         if ($request->route()->named('category.edit.show')) {
             $editMode = true;
             $idRecord = $request->get('id');
@@ -54,9 +54,11 @@ class CategoryController extends Controller
             $info = $this->category->getInfo($select, $where);
             if ($info->exists()) {
                 $infoCat = $info->getAttributes();
+                $whereCat[] = ['type', "=", $infoCat['type']];
+                $whereCat[] = ['id', "<>", $idRecord];
             }
         }
-
+        $listCat = $this->category->getResult($whereCat);
         //
         return view(CATEGORY_VIEW_ADD, compact('title', 'listCat', 'editMode', 'infoCat', 'editMode'));
     }
@@ -87,6 +89,29 @@ class CategoryController extends Controller
             
             return redirect()->route('category.list');
         }
+    }
+    
+    public function checkType(Request $request)
+    {
+        $id = $request->get('id');
+        $select = ['id', 'type'];
+        $where = [
+            ['id', '=', $id]
+        ];
+        
+        $info = $this->category->getInfo($select, $where);
+        if ($info->exists()) {
+            $response = [
+                'result' => 1,
+                'info' => $info
+            ];
+        } else {
+            $response = [
+                'result' => 0,
+                'info' => 'Error!!!'
+            ];
+        }
+        return response()->json($response);
     }
     
 }
