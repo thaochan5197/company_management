@@ -26,4 +26,6 @@ Route::prefix('admin')->group(function() {
     Route::post('/category/add', 'CategoryController@add')->name('category.add.action')->middleware(['locale', 'auth']);
     Route::post('/category/edit', 'CategoryController@add')->name('category.edit.action')->middleware(['locale', 'auth']);
     Route::get('/category/check-type', 'CategoryController@checkType')->name('category.checkType')->middleware(['locale', 'auth']);
+    Route::get('/project/add', 'ProjectController@showForm')->name('project.add.show')->middleware(['locale', 'auth']);
 });
+Route::get('get-province', 'CrawlerProvince@getProvince')->name('province.get');

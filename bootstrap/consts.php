@@ -1,10 +1,22 @@
 <?php
 //constant template
-//view realty post add
-const REALTY_POST_VIEW_ADD = 'realty_post.add';
-//view category add
-const CATEGORY_VIEW_ADD = 'category.add';
-const CATEGORY_VIEW_LIST = 'category.list';
+const ADMIN_PREFIX = 'admin';
+const ADMIN_LAYOUTS = ADMIN_PREFIX . '.layouts.admin';
+const ADMIN_HEADER = ADMIN_PREFIX . '.include.header';
+const ADMIN_BREADCUM = ADMIN_PREFIX . '.include.breadcum';
+
+// realty post template
+const REALTY_POST_VIEW_ADD = ADMIN_PREFIX . '.realty_post.add';
+
+// view category add
+const CATEGORY_VIEW_ADD = ADMIN_PREFIX . '.category.add';
+const CATEGORY_VIEW_LIST = ADMIN_PREFIX . '.category.list';
+
+// dashboard view
+const DASHBOARD_VIEW = ADMIN_PREFIX . '.dashboard.index';
+
+//project view
+const PROJECT_VIEW_ADD = ADMIN_PREFIX . '.project.add';
 
 //constant STATUS
 const CAT_PARENT = 0;

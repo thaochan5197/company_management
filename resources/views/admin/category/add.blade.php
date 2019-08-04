@@ -3,7 +3,7 @@
  * @var $listCat App\Http\Controllers\CategoryController
  */
 ?>
-@extends('layouts.admin')
+@extends(ADMIN_LAYOUTS)
 @section("content")
 <div class="row">
     <div class="col-12">

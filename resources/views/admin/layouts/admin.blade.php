@@ -45,11 +45,11 @@
 <div class="main-wrapper">
 
 
-@include('include.header')
+@include(ADMIN_HEADER)
 <!-- Content Body Start -->
     <div class="content-body">
 
-    @include('include.breadcum')
+    @include(ADMIN_BREADCUM)
     @yield('content')
     </div>
 

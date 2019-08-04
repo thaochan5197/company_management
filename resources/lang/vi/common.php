@@ -17,6 +17,7 @@ return [
     'realty_sell' => 'Bán nhà đất',
     'realty_buy' => 'Mua nhà đất',
     'news' => 'Tin tức',
+    'project' => 'Dự án',
     
     //text
     'id' => 'ID',

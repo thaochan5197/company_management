@@ -6,7 +6,7 @@
  * Time: 3:14 PM
  */
 ?>
-@extends('layouts.admin')
+@extends(ADMIN_LAYOUTS)
 @section('content')
         <!-- Top Report Wrap Start -->
         <div class="row">
