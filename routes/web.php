@@ -15,17 +15,15 @@ Route::get('/', function () {
     return redirect()->route('home');
 });
 
-
-Auth::routes();
-
-Route::middleware(['locale', 'auth'])->group(function() {
-    Route::get('/dashboard', 'DashboardController@index')->name('home');
-    Route::get('/product', 'ProductController@index')->name('product.index');
-    Route::get('/post/add', 'RealtyPostController@add')->name('realty_post.add');
-    Route::get('/category/list', 'CategoryController@showList')->name('category.list');
-    Route::get('/category/add', 'CategoryController@showForm')->name('category.add.show');
-    Route::get('/category/edit', 'CategoryController@showForm')->name('category.edit.show');
-    Route::post('/category/add', 'CategoryController@add')->name('category.add.action');
-    Route::post('/category/edit', 'CategoryController@add')->name('category.edit.action');
-    Route::get('/category/check-type', 'CategoryController@checkType')->name('category.checkType');
+Route::prefix('admin')->group(function() {
+    Auth::routes();
+    Route::get('/dashboard', 'DashboardController@index')->name('home')->middleware(['locale', 'auth']);
+    Route::get('/product', 'ProductController@index')->name('product.index')->middleware(['locale', 'auth']);
+    Route::get('/post/add', 'RealtyPostController@add')->name('realty_post.add')->middleware(['locale', 'auth']);
+    Route::get('/category/list', 'CategoryController@showList')->name('category.list')->middleware(['locale', 'auth']);
+    Route::get('/category/add', 'CategoryController@showForm')->name('category.add.show')->middleware(['locale', 'auth']);
+    Route::get('/category/edit', 'CategoryController@showForm')->name('category.edit.show')->middleware(['locale', 'auth']);
+    Route::post('/category/add', 'CategoryController@add')->name('category.add.action')->middleware(['locale', 'auth']);
+    Route::post('/category/edit', 'CategoryController@add')->name('category.edit.action')->middleware(['locale', 'auth']);
+    Route::get('/category/check-type', 'CategoryController@checkType')->name('category.checkType')->middleware(['locale', 'auth']);
 });
