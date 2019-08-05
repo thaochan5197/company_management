@@ -9,6 +9,6 @@ class DashboardController extends Controller
     public function index()
     {
         $title = __('header.dashboard.index');
-        return view('dashboard.index', compact('title'));
+        return view(DASHBOARD_VIEW, compact('title'));
     }
 }

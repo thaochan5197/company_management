@@ -36,7 +36,6 @@
                                         </form>
                                         <button class="header-search-close d-block d-xl-none"><i class="zmdi zmdi-close"></i></button>
                                     </div>
-
                                 </div>
                             </div>
 
@@ -267,6 +266,11 @@
                 <li class="has-sub-menu"><a href="#"><i class="ti-package"></i> <span>{{ __('common.realty_post') }}</span></a>
                     <ul class="side-header-sub-menu">
                         <li><a href="{{ route('realty_post.add') }}"><span>{{ __('common.add') }}</span></a></li>
+                    </ul>
+                </li>
+                <li class="has-sub-menu"><a href="#"><i class="fa fa-product-hunt"></i> <span>{{ __('common.project') }}</span></a>
+                    <ul class="side-header-sub-menu">
+                        <li><a href="{{ route('project.add.show') }}"><span>{{ __('common.add') }}</span></a></li>
                     </ul>
                 </li>
                 <li class="has-sub-menu"><a href="#"><i class="fa fa-list"></i> <span>{{ __('common.category') }}</span></a>
