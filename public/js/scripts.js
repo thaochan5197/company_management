@@ -26,3 +26,25 @@ function changeTypeByCat(elm) {
     }
 
 }
+
+$(document).ready(function() {
+    let select = $("select[name=province_list]");
+    let input = $("input[name=province]");
+    select.change(function () {
+        let value = select.val();
+        input.val(value);
+    })
+});
+
+function disabledProvince() {
+    $("#province_saved option").each(function () {
+        let val = $(this).val();
+        $("select[name=province_list] option").each(function () {
+            if ($(this).attr('id') == val) {
+                console.log(123);
+                $(this).prop('disabled', true);
+            }
+        });
+    })
+}
+disabledProvince();
