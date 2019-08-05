@@ -19,9 +19,10 @@ class Province extends Model
      */
     public $timestamps = true;
 
-    public function getResult($where = [])
+    public function getResult($select, $where = [])
     {
-        $query = $this->where($where)
+        $query = $this->select($select)
+            ->where($where)
             ->get()->toArray();
         return $query;
     }

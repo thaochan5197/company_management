@@ -2,7 +2,7 @@
 @section("content")
     <div class="row">
         <div class="col-lg-4 col-12 mb-20">
-            <p class="mb-15">Tên dự án(<span style="color: red">*</span>)</p>
+            <p class="mb-15">{{ __('common.name') . ' ' . __('common.project') }}(<span style="color: red">*</span>)</p>
 
             <div class="row mbn-15">
                 <div class="col-12 mb-15">
@@ -15,12 +15,15 @@
         </div>
         <div class="col-lg-4 col-12 mb-20">
 
-            <p class="mb-15">Tỉnh/Thành phố (<span style="color: red">*</span>)</p>
+            <p class="mb-15">{{ __('province.province') }} (<span style="color: red">*</span>)</p>
 
             <div class="row mbn-15">
                 <div class="col-12 mb-15">
-                    <select class="form-control">
-                        <option>Tỉnh/Thành phố</option>
+                    <select class="form-control" name="province" data-uri="{{ route('province.get') }}" data-for="district" onchange="getProvince(this)">
+                        <option>{{ __('province.province') }}</option>
+                        @foreach($listProvince as $item)
+                            <option value="{{ $item->code }}">{{ $item->name }}</option>
+                            @endforeach
                     </select>
                 </div>
             </div>
@@ -29,12 +32,13 @@
 
         <div class="col-lg-4 col-12 mb-20">
 
-            <p class="mb-15">Quận/Huyện (<span style="color: red">*</span>)</p>
+            <p class="mb-15">{{ __('province.district') }} (<span style="color: red">*</span>)</p>
 
             <div class="row mbn-15">
                 <div class="col-12 mb-15">
-                    <select class="form-control">
-                        <option>Quận/Huyện</option>
+                    <select class="form-control" name="district" data-uri="{{ route('province.get') }}" data-for="wards" onchange="getProvince(this)">
+                        <option>{{ __('province.district') }}</option>
+
                     </select>
                 </div>
             </div>
@@ -43,12 +47,12 @@
 
         <div class="col-lg-4 col-12 mb-20">
 
-            <p class="mb-15">Phường/Xã</p>
+            <p class="mb-15">{{ __('province.wards') }}</p>
 
             <div class="row mbn-15">
                 <div class="col-12 mb-15">
-                    <select class="form-control">
-                        <option>Phường/Xã</option>
+                    <select class="form-control" name="wards">
+                        <option>{{ __('province.wards') }}</option>
                     </select>
                 </div>
             </div>
@@ -57,13 +61,11 @@
 
         <div class="col-lg-4 col-12 mb-20">
 
-            <p class="mb-15">Đường/Phố</p>
+            <p class="mb-15">{{ __('province.street') }}</p>
 
             <div class="row mbn-15">
                 <div class="col-12 mb-15">
-                    <select class="form-control">
-                        <option>Đường/phố</option>
-                    </select>
+                    <input type="text" class="form-control">
                 </div>
             </div>
 

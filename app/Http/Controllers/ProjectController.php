@@ -6,9 +6,18 @@ use Illuminate\Http\Request;
 
 class ProjectController extends Controller
 {
-    public function showForm()
+    protected $province;
+    public function __construct()
+    {
+        $this->province = new ProvinceController();
+    }
+    
+    public function showForm(Request $request)
     {
         $title = __('common.add') . ' ' . __('common.project');
-        return view(PROJECT_VIEW_ADD, compact('title', 'listCat'));
+    
+        $listProvince = $this->province->getProvince($request, 0)->getData();
+        $listProvince = $listProvince->detail;
+        return view(PROJECT_VIEW_ADD, compact('title', 'listCat', 'listProvince'));
     }
 }

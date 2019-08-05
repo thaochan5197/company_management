@@ -48,3 +48,8 @@ const PROVINCE_TYPE = [
     'district' => 1,
     'wards' => 2
 ];
+
+const PROVINCE_STATUS = [
+    'draft' => 0,
+    'public' => 1
+];
