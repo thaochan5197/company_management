@@ -42,3 +42,9 @@ const STATUS_COLOR = [
     STATUS_CATEGORY['draft'] => 'fa fa-lock text-danger',
     STATUS_CATEGORY['public'] => 'fa fa-globe text-primary',
 ];
+
+const PROVINCE_TYPE = [
+    'province' => 0,
+    'district' => 1,
+    'wards' => 2
+];
