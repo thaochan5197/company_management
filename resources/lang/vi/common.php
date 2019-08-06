@@ -21,6 +21,7 @@ return [
     
     //text
     'id' => 'ID',
+    'name' => 'Tên',
     'title' => 'Tiêu đề',
     'status' => 'Trạng thái',
     'category' => 'Danh mục',

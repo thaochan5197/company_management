@@ -1,3 +1,4 @@
+//ajax change categoty auto select type
 function changeTypeByCat(elm) {
     let id = $(elm).val();
     let url = $(elm).data('uri');
@@ -27,6 +28,7 @@ function changeTypeByCat(elm) {
 
 }
 
+//doan script nay viet de lay province
 $(document).ready(function() {
     let select = $("select[name=province_list]");
     let input = $("input[name=province]");
@@ -41,10 +43,36 @@ function disabledProvince() {
         let val = $(this).val();
         $("select[name=province_list] option").each(function () {
             if ($(this).attr('id') == val) {
-                console.log(123);
                 $(this).prop('disabled', true);
             }
         });
     })
 }
 disabledProvince();
+//doan script nay viet de lay province
+
+function getProvince(elm) {
+    let id = $(elm).val();
+    let url = $(elm).data('uri');
+    let dataFor = $(elm).data('for');
+    let formSetData = $("select[name="+dataFor+"]");
+    let optionNull = '<option>-----------</option>';
+    if (dataFor === 'district') {
+        $("select[name=wards]").html(optionNull);
+    }
+    $.ajax({
+        url : url,
+        type : 'get',
+        data : {code : id},
+        dataType: 'json',
+        success: function (res) {
+            let html = optionNull;
+            if (Number(res.result) === 1) {
+                res.detail.forEach(function (item) {
+                    html += `<option value="${item.code}">${item.name}</option>`;
+                });
+            }
+            formSetData.html(html);
+        }
+    });
+}
