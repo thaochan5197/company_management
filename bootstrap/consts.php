@@ -17,7 +17,15 @@ const DASHBOARD_VIEW = ADMIN_PREFIX . '.dashboard.index';
 
 //project view
 const PROJECT_VIEW_ADD = ADMIN_PREFIX . '.project.add';
-
+const PROJECT_VIEW_LIST = ADMIN_PREFIX . '.project.list';
+const STATUS = [
+    'draft' => 0,
+    'public' => 1
+];
+const STATUS_BY_ID = [
+    0 => 'draft',
+    1 => 'public'
+];
 //constant STATUS
 const CAT_PARENT = 0;
 const STATUS_CATEGORY = [
