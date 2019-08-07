@@ -101,6 +101,13 @@
 <script src="{{ asset('/js/plugins/vmap/vmap.active.js') }}"></script>
 <script src="{{ asset('/js/scripts.js') }}"></script>
 
+<!-- Editor -->
+<script src="{{ asset('/js/plugins/summernote/summernote-bs4.min.js') }}"></script>
+<script src="{{ asset('/js/plugins/summernote/summernote.active.js') }}"></script>
+
+<!-- custom -->
+<script src="{{ asset('/js/scripts.js') }}"></script>
+
 </body>
 
 
