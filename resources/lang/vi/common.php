@@ -28,6 +28,7 @@ return [
     'category' => 'Danh mục',
     'type' => 'Thể loại',
     'update' => 'Cập nhật',
+    'submit' => 'Đăng tin',
     'save' => 'Lưu',
     'edit' => 'Sửa',
     'delete' => 'Xóa',
@@ -35,4 +36,5 @@ return [
     'public' => 'Công khai',
     'created_at' => 'Tạo',
     'updated_at' => 'Cập nhật',
+    'page' => 'Trang',
 ];
