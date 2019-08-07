@@ -49,14 +49,18 @@ function disabledProvince() {
     })
 }
 disabledProvince();
-//doan script nay viet de lay province
+//end doan script nay viet de lay province
 
+/**
+ * get province when select
+ * @param elm
+ */
 function getProvince(elm) {
     let id = $(elm).val();
     let url = $(elm).data('uri');
     let dataFor = $(elm).data('for');
     let formSetData = $("select[name="+dataFor+"]");
-    let optionNull = '<option>-----------</option>';
+    let optionNull = '<option value="">-----------</option>';
     if (dataFor === 'district') {
         $("select[name=wards]").html(optionNull);
     }

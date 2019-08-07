@@ -2,22 +2,111 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\ProjectRequest;
+use App\Project;
+use App\Province;
 use Illuminate\Http\Request;
 
 class ProjectController extends Controller
 {
-    protected $province;
+    protected $provinceTable;
+
+    protected $projectTable;
+
+    protected $provinceController;
+
     public function __construct()
     {
-        $this->province = new ProvinceController();
+        $this->provinceTable = new Province();
+        $this->projectTable = new Project();
+        $this->provinceController = new ProvinceController();
     }
     
     public function showForm(Request $request)
     {
         $title = __('common.add') . ' ' . __('common.project');
-    
-        $listProvince = $this->province->getProvince($request, 0)->getData();
+        $editMode = false;
+        $info = [];
+        $listProvince = $this->provinceController->getProvince($request, 0)->getData();
         $listProvince = $listProvince->detail;
-        return view(PROJECT_VIEW_ADD, compact('title', 'listCat', 'listProvince'));
+        if ($request->route()->named('project.edit.show')) {
+            $idRecord = $request->get('id');
+            if ($idRecord !== null) {
+                $select = ['*'];
+                $where = [
+                    ['id', '=', $idRecord]
+                ];
+                $info = $this->projectTable->getInfo($select, $where);
+                if ($info->exists()) {
+                    $editMode = true;
+                } else {
+                    return response()->json([
+                        'result' => 0,
+                        'error' => 'Not exists this record!'
+                    ]);
+                }
+            } else {
+                return response()->json([
+                    'result' => 0,
+                    'error' => 'Not exists this record!'
+                ]);
+            }
+        }
+        return view(PROJECT_VIEW_ADD, compact('title', 'listCat', 'listProvince', 'editMode', 'info'));
+    }
+
+    public function add(ProjectRequest $request)
+    {
+        if ($request->isMethod('post') && $request->route()->named('project.add.action')) {
+            $validate = $request->validate();
+            if ($validate === null) {
+                $data = $request->input();
+                unset($data['_token']);
+                foreach ($data as $key => $item) {
+                    $this->projectTable->$key = $item;
+                }
+                $this->projectTable->save();
+                return redirect()->route('project.list');
+            }
+        }
+    }
+
+    public function showList()
+    {
+        $title = __('common.list') . ' ' . __('common.project');
+        $list = $this->projectTable->getResult();
+        $selectProvince = ['name'];
+
+        foreach ($list as $key => $item) {
+            if (!empty($item['province'])) {
+                $whereProvince = [
+                    ['code', '=', $item['province']]
+                ];
+                $info = $this->provinceTable->getInfo($selectProvince, $whereProvince);
+                $list[$key]['province'] = $info['name'];
+            }
+
+            if (!empty($item['district'])) {
+                $whereDistrict = [
+                    ['code', '=', $item['district']]
+                ];
+                $info = $this->provinceTable->getInfo($selectProvince, $whereDistrict);
+                $list[$key]['district'] = $info['name'];
+            }
+            if (!empty($item['wards'])) {
+                $whereWards = [
+                    ['code', '=', $item['wards']]
+                ];
+                $info = $this->provinceTable->getInfo($selectProvince, $whereWards);
+                $list[$key]['wards'] = $info['name'];
+            }
+        }
+
+        return view(PROJECT_VIEW_LIST, compact('title', 'list'));
+    }
+
+    public function edit()
+    {
+
     }
 }

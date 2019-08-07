@@ -23,6 +23,7 @@ return [
     'id' => 'ID',
     'name' => 'Tên',
     'title' => 'Tiêu đề',
+    'address' => 'Địa chỉ',
     'status' => 'Trạng thái',
     'category' => 'Danh mục',
     'type' => 'Thể loại',

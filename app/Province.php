@@ -26,4 +26,11 @@ class Province extends Model
             ->get()->toArray();
         return $query;
     }
+
+    public function getInfo($select = [], $where = [])
+    {
+        return $this->select($select)
+            ->where($where)
+            ->first()->toArray();
+    }
 }
