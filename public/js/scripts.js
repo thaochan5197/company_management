@@ -59,15 +59,15 @@ function getProvince(elm) {
     let id = $(elm).val();
     let url = $(elm).data('uri');
     let dataFor = $(elm).data('for');
-    let formSetData = $("select[name="+dataFor+"]");
+    let formSetData = $("select[name=" + dataFor + "]");
     let optionNull = '<option value="">-----------</option>';
     if (dataFor === 'district') {
         $("select[name=wards]").html(optionNull);
     }
     $.ajax({
-        url : url,
-        type : 'get',
-        data : {code : id},
+        url: url,
+        type: 'get',
+        data: {code: id},
         dataType: 'json',
         success: function (res) {
             let html = optionNull;
@@ -79,17 +79,17 @@ function getProvince(elm) {
             formSetData.html(html);
         }
     });
-
+}
 function ChangeToSlug()
 {
     var title, slug;
- 
-    //Lấy text từ thẻ input title 
+
+    //Lấy text từ thẻ input title
     title = document.getElementById("title").value;
- 
+
     //Đổi chữ hoa thành chữ thường
     slug = title.toLowerCase();
- 
+
     //Đổi ký tự có dấu thành không dấu
     slug = slug.replace(/á|à|ả|ạ|ã|ă|ắ|ằ|ẳ|ẵ|ặ|â|ấ|ầ|ẩ|ẫ|ậ/gi, 'a');
     slug = slug.replace(/é|è|ẻ|ẽ|ẹ|ê|ế|ề|ể|ễ|ệ/gi, 'e');
