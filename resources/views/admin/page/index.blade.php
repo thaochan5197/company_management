@@ -1,4 +1,4 @@
-@extends('layouts.admin')
+@extends(ADMIN_LAYOUTS)
 @section('content')
 <div class="row">
     <!--Default Data Table Start-->

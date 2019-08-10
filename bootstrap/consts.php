@@ -12,6 +12,10 @@ const REALTY_POST_VIEW_ADD = ADMIN_PREFIX . '.realty_post.add';
 const CATEGORY_VIEW_ADD = ADMIN_PREFIX . '.category.add';
 const CATEGORY_VIEW_LIST = ADMIN_PREFIX . '.category.list';
 
+// view page
+const PAGE_VIEW_FORM = ADMIN_PREFIX . '.page.form';
+const PAGE_VIEW_INDEX = ADMIN_PREFIX . '.page.index';
+
 // dashboard view
 const DASHBOARD_VIEW = ADMIN_PREFIX . '.dashboard.index';
 

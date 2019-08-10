@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Page;
+use Http\Requests\PageRequest;
 use Illuminate\Http\Request;
 
 class PageController extends Controller
@@ -24,7 +25,7 @@ class PageController extends Controller
         $title = __('common.list') . ' ' . __('common.page');
         $pages = $this->page->get();
 
-        return view('page.index', compact('title', 'pages'));
+        return view(PAGE_VIEW_INDEX, compact('title', 'pages'));
     }
 
     /**
@@ -36,7 +37,7 @@ class PageController extends Controller
     {
         $title = __('common.add') . ' ' . __('common.page');
 
-        return view('page.form', compact('title'));
+        return view(PAGE_VIEW_FORM, compact('title'));
     }
 
     /**
@@ -45,7 +46,7 @@ class PageController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(PageRequest $request)
     {
         $this->validate($request,
             [
@@ -59,7 +60,7 @@ class PageController extends Controller
         $this->page->order = $request->order;
         $this->page->save();
 
-        return redirect()->route('page.index');
+        return redirect()->route(PAGE_VIEW_INDEX);
     }
 
     /**
