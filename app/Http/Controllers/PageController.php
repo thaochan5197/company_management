@@ -52,7 +52,7 @@ class PageController extends Controller
             [
                 'title' => 'required|max:255',
                 'slug' => 'required',
-            ],
+            ]
         );
         $this->page->title = $request->title;
         $this->page->slug = $request->slug;

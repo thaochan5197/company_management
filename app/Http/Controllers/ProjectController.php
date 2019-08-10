@@ -39,6 +39,20 @@ class ProjectController extends Controller
                 $info = $this->projectTable->getInfo($select, $where);
                 if ($info->exists()) {
                     $editMode = true;
+                    // get list quan huyen theo tinh
+                    $listDistrict = $this->provinceController->getProvince($request, $info['province'])->getData();
+                    if ($listDistrict->result) {
+                        $listDistrict = $listDistrict->detail;
+                    } else {
+                        $listDistrict = '';
+                    }
+                    // get list xa/phuong theo quan huyen
+                    $listWards = $this->provinceController->getProvince($request, $info['district'])->getData();
+                    if ($listWards->result) {
+                        $listWards = $listWards->detail;
+                    } else {
+                        $listWards = '';
+                    }
                 } else {
                     return response()->json([
                         'result' => 0,
@@ -52,12 +66,12 @@ class ProjectController extends Controller
                 ]);
             }
         }
-        return view(PROJECT_VIEW_ADD, compact('title', 'listCat', 'listProvince', 'editMode', 'info'));
+        return view(PROJECT_VIEW_ADD, compact('title', 'listCat', 'listProvince', 'editMode', 'info', 'listDistrict', 'listWards'));
     }
 
     public function add(ProjectRequest $request)
     {
-        if ($request->isMethod('post') && $request->route()->named('project.add.action')) {
+        if ($request->isMethod('post') && ($request->route()->named('project.add.action') || $request->route()->named('project.edit.action'))) {
             $validate = $request->validate();
             if ($validate === null) {
                 $data = $request->input();
@@ -65,7 +79,15 @@ class ProjectController extends Controller
                 foreach ($data as $key => $item) {
                     $this->projectTable->$key = $item;
                 }
-                $this->projectTable->save();
+                if ($request->route()->named('project.add.action')) {
+                    $this->projectTable->save();
+                } elseif ($request->route()->named('project.edit.action')) {
+                    $id = $request->get('id');
+                    $dataUpdate = $this->projectTable->getAttributes();
+                    $where = ['id' => $id];
+                    $result = $this->projectTable->updateInfo($where, $dataUpdate);
+                }
+                
                 return redirect()->route('project.list');
             }
         }
@@ -104,9 +126,5 @@ class ProjectController extends Controller
 
         return view(PROJECT_VIEW_LIST, compact('title', 'list'));
     }
-
-    public function edit()
-    {
-
-    }
+    
 }

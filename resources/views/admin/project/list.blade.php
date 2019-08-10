@@ -25,7 +25,7 @@
                     <td>{{ $item['id'] }}</td>
                     <td><i class="{{ STATUS_COLOR[$item['status']] }}"></i></td>
                     <td>{{ $item['name'] }}</td>
-                    <td>{{ $item['address'] . ' - ' . $item['street'] . ' - ' . $item['wards'] . ' - ' . $item['district'] . ' - ' . $item['province'] }}</td>
+                    <td>{{ $item['street'] . ' - ' . $item['wards'] . ' - ' . $item['district'] . ' - ' . $item['province'] }}</td>
                     <td>{{ $item['created_at'] }}</td>
                     <td>{{ $item['updated_at'] }}</td>
                     <td>
