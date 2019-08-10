@@ -52,7 +52,7 @@ class Project extends Model
      */
     public function updateInfo($where, $data)
     {
-        return $this->where($where['field'], $where['data'])
+        return $this->where($where)
             ->update($data);
     }
 }
