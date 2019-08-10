@@ -15,6 +15,7 @@ const CATEGORY_VIEW_LIST = ADMIN_PREFIX . '.category.list';
 // view page
 const PAGE_VIEW_FORM = ADMIN_PREFIX . '.page.form';
 const PAGE_VIEW_INDEX = ADMIN_PREFIX . '.page.index';
+const PAGE_VIEW_DETAIL = ADMIN_PREFIX . '.page.detail';
 
 // dashboard view
 const DASHBOARD_VIEW = ADMIN_PREFIX . '.dashboard.index';

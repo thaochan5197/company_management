@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Page;
-use Http\Requests\PageRequest;
+use App\Http\Requests\PageRequest;
 use Illuminate\Http\Request;
 
 class PageController extends Controller
@@ -23,7 +23,7 @@ class PageController extends Controller
     public function index()
     {
         $title = __('common.list') . ' ' . __('common.page');
-        $pages = $this->page->get();
+        $pages = $this->page->orderBy('order')->get();
 
         return view(PAGE_VIEW_INDEX, compact('title', 'pages'));
     }
@@ -48,19 +48,16 @@ class PageController extends Controller
      */
     public function store(PageRequest $request)
     {
-        $this->validate($request,
-            [
-                'title' => 'required|max:255',
-                'slug' => 'required',
-            ]
-        );
-        $this->page->title = $request->title;
-        $this->page->slug = $request->slug;
-        $this->page->content = $request->content;
-        $this->page->order = $request->order;
-        $this->page->save();
+        $validate = $request->validate();
+        if (is_null($validate)) {
+            $this->page->title = $request->title;
+            $this->page->slug = $request->slug;
+            $this->page->content = $request->content;
+            $this->page->order = $request->order;
+            $this->page->save();
+        }
 
-        return redirect()->route(PAGE_VIEW_INDEX);
+        return redirect()->route('page.index');
     }
 
     /**
@@ -69,9 +66,12 @@ class PageController extends Controller
      * @param  \App\Page  $page
      * @return \Illuminate\Http\Response
      */
-    public function show(Page $page)
+    public function show($id)
     {
-        //
+        $title = __('page.content') . ' ' . __('common.page');
+        $page = $this->page->find($id);
+
+        return view(PAGE_VIEW_DETAIL, compact('page', 'title'));
     }
 
     /**
@@ -80,9 +80,12 @@ class PageController extends Controller
      * @param  \App\Page  $page
      * @return \Illuminate\Http\Response
      */
-    public function edit(Page $page)
+    public function edit($id)
     {
-        //
+        $title = __('common.edit') . ' ' . __('common.page');
+        $page = $this->page->find($id);
+
+        return view(PAGE_VIEW_FORM, compact('title', 'page'));
     }
 
     /**
@@ -92,9 +95,17 @@ class PageController extends Controller
      * @param  \App\Page  $page
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Page $page)
+    public function update(PageRequest $request, $id)
     {
-        //
+        $data = $request->all();
+        $validate = $request->validate();
+
+        if (is_null($validate)) {
+            $page = $this->page->findOrFail($id);
+            $page->update($data);
+
+            return redirect()->route('page.index');
+        }
     }
 
     /**
@@ -103,8 +114,11 @@ class PageController extends Controller
      * @param  \App\Page  $page
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Page $page)
+    public function destroy($id)
     {
-        //
+        $page = $this->page->findOrFail($id);
+        $page->delete();
+
+        return redirect()->route('page.index');
     }
 }

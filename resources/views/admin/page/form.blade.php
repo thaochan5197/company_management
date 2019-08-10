@@ -3,7 +3,7 @@
 <div class="row">
     <!--Form controls Start-->
     @if(isset($page))
-        {{ Form::model($page, ['route' => ['update', $page->id], 'method' => 'patch']) }}
+        {{ Form::model($page, ['route' => ['page.update', $page->id], 'method' => 'put']) }}
     @else
         {{ Form::open(['route' => 'page.store']) }}
     @endif
@@ -19,8 +19,8 @@
 
                         <div class="row mbn-15">
                             <div class="col-12 mb-15">
-                                <input type="text" name="title" class="form-control" id="title" onkeyup="ChangeToSlug()">
-                                <!-- {{ Form::text('title', Input::old('title'), ['class' => 'form-control', 'id' => 'title', 'onkeyup' => 'ChangeToSlug']) }} -->
+                                <!-- <input type="text" name="title" value="{{ Input::old('title') }}" class="form-control" id="title" onkeyup="ChangeToSlug()"> -->
+                                {{ Form::text('title', Input::old('title'), ['class' => 'form-control', 'id' => 'title', 'onkeyup' => 'ChangeToSlug']) }}
                             </div>
                         </div>
                     </div>
@@ -28,8 +28,8 @@
                         <h6 class="mb-15">{{ __('page.slug') }} (<span style="color: red">*</span>)</h6>
                         <div class="row mbn-15">
                             <div class="col-12 mb-15">
-                                <input type="text" name="slug" class="form-control" id="slug">
-                                <!-- {{ Form::text('slug', Input::old('slug'), ['class' => 'form-control', 'id' => 'slug']) }} -->
+                                <!-- <input type="text" name="slug" value="{{ Input::old('slug') }}" class="form-control" id="slug"> -->
+                                {{ Form::text('slug', Input::old('slug'), ['class' => 'form-control', 'id' => 'slug']) }}
                             </div>
                         </div>
                     </div>

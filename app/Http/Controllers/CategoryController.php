@@ -82,7 +82,7 @@ class CategoryController extends Controller
                 $this->category->save();
             } elseif ($request->route()->named('category.edit.action')) {
                 $id = $request->get('id');
-                $where = ['id' => $id];
+                $where = ['field' => 'id', 'data' => $id];
                 $data = $this->category->getAttributes();
                 $result = $this->category->updateInfo($where, $data);
             }
