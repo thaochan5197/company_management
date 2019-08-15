@@ -37,4 +37,9 @@ return [
     'created_at' => 'Tạo',
     'updated_at' => 'Cập nhật',
     'page' => 'Trang',
+    'search' => 'Tìm kiếm',
+    'serial' => 'STT',
+    'view' => 'xem',
+    'comfirm' => 'Xác nhận',
+    'close' => 'Đóng',
 ];

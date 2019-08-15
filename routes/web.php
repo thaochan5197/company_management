@@ -35,8 +35,10 @@ Route::prefix('admin')->group(function() {
     Route::get('/page/index', 'PageController@index')->name('page.index')->middleware(['locale', 'auth']);
     Route::get('/page/create', 'PageController@create')->name('page.create')->middleware(['locale', 'auth']);
     Route::post('/page/store', 'PageController@store')->name('page.store')->middleware(['locale', 'auth']);
-    Route::get('/page/edit', 'PageController@showForm')->name('page.edit.show')->middleware(['locale', 'auth']);
-    Route::post('/page/add', 'PageController@add')->name('page.add.action')->middleware(['locale', 'auth']);
-    Route::post('/page/edit', 'PageController@add')->name('page.edit.action')->middleware(['locale', 'auth']);
+    Route::get('/page/detail/{id}', 'PageController@show')->name('page.show')->middleware(['locale', 'auth']);
+    Route::get('/page/edit/{id}', 'PageController@edit')->name('page.edit')->middleware(['locale', 'auth']);
+    Route::put('/page/update/{id}', 'PageController@update')->name('page.update')->middleware(['locale', 'auth']);
+    Route::get('/page/destroy/{id}', 'PageController@destroy')->name('page.destroy')->middleware(['locale', 'auth']);
+    // Route::resource('/page', 'PageController')->middleware(['locale', 'auth']);
 });
 Route::get('get-province', 'CrawlerProvince@getProvince')->name('province.crawler');

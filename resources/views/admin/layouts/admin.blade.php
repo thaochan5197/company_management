@@ -34,6 +34,8 @@
     <!-- Main Style CSS -->
     <link rel="stylesheet" href="{{ asset('/css/style.css') }}">
 
+    <link rel="stylesheet" href="{{ asset('/css/custom.css') }}">
+
     <!-- Custom Style CSS Only For Demo Purpose -->
     <link id="cus-style" rel="stylesheet" href="{{ asset('/css/style-primary.css') }}">
 

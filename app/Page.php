@@ -18,4 +18,6 @@ class Page extends Model
      * @var bool
      */
     public $timestamps = true;
+
+    protected $fillable = ['title', 'slug', 'content', 'order', 'created_at', 'updated_at'];
 }
