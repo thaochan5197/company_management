@@ -33,11 +33,19 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-lg-12 col-12 mb-20">
+                    <div class="col-lg-3 col-12 mb-20">
                         <h6 class="mb-15">{{ __('page.order') }}</h6>
                         <div class="row mbn-15">
-                            <div class="col-3 mb-15">
+                            <div class="col-12 mb-15">
                                 {{ Form::number('order', Input::old('order'), ['class' => 'form-control']) }}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-12 mb-20">
+                        <h6 class="mb-15">{{ __('common.status') }}</h6>
+                        <div class="row mbn-15">
+                            <div class="col-12 mb-15">
+                                {{ Form::select('status', STATUS_CATEGORY_BY_INT, Input::old('status'), ['class' => 'form-control']) }}
                             </div>
                         </div>
                     </div>

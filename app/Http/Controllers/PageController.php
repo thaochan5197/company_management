@@ -49,11 +49,13 @@ class PageController extends Controller
     public function store(PageRequest $request)
     {
         $validate = $request->validate();
+        $data = $request->all();
         if (is_null($validate)) {
             $this->page->title = $request->title;
             $this->page->slug = $request->slug;
             $this->page->content = $request->content;
             $this->page->order = $request->order;
+            $this->page->status = $request->status;
             $this->page->save();
         }
 
@@ -99,7 +101,7 @@ class PageController extends Controller
     {
         $data = $request->all();
         $validate = $request->validate();
-
+        // var_dump($data);die;
         if (is_null($validate)) {
             $page = $this->page->findOrFail($id);
             $page->update($data);

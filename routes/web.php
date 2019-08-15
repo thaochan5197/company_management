@@ -38,7 +38,7 @@ Route::prefix('admin')->group(function() {
     Route::get('/page/detail/{id}', 'PageController@show')->name('page.show')->middleware(['locale', 'auth']);
     Route::get('/page/edit/{id}', 'PageController@edit')->name('page.edit')->middleware(['locale', 'auth']);
     Route::put('/page/update/{id}', 'PageController@update')->name('page.update')->middleware(['locale', 'auth']);
-    Route::delete('/page/destroy/{id}', 'PageController@destroy')->name('page.destroy')->middleware(['locale', 'auth']);
+    Route::get('/page/destroy/{id}', 'PageController@destroy')->name('page.destroy')->middleware(['locale', 'auth']);
     // Route::resource('/page', 'PageController')->middleware(['locale', 'auth']);
 });
 Route::get('get-province', 'CrawlerProvince@getProvince')->name('province.crawler');
