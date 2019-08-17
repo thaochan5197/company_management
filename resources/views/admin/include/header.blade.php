@@ -287,6 +287,13 @@
                         <li><a href="{{ route('page.create') }}"><span>{{ __('common.add') }}</span></a></li>
                     </ul>
                 </li>
+                <li class="has-sub-menu">
+                    <a href="#"><i class="fa fa-list"></i> <span>{{ __('post.post') }}</span></a>
+                    <ul class="side-header-sub-menu">
+                        <li><a href="{{ route('post.index') }}"><span>{{ __('common.list') }}</span></a></li>
+                        <li><a href="{{ route('post.create') }}"><span>{{ __('common.add') }}</span></a></li>
+                    </ul>
+                </li>
             </ul>
         </nav>
 

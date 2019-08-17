@@ -4,12 +4,12 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Page extends Model
+class Post extends Model
 {
     /**
      * @var string
      */
-    protected $table = 'pages';
+    protected $table = 'posts';
     /**
      * @var string
      */
@@ -19,7 +19,7 @@ class Page extends Model
      */
     public $timestamps = true;
 
-    protected $fillable = ['title', 'slug', 'content', 'order', 'created_at', 'updated_at'];
+    protected $fillable = ['title', 'slug', 'summary', 'category', 'status', 'content', 'order', 'created_at', 'updated_at'];
 
     public function scopeTitle($query, $request)
     {

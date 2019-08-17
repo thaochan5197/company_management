@@ -8,7 +8,7 @@
                 <div class="row">
                     <div class="col-lg-3 col-12 mb-10">
                         <p class="mb-5">{{ __('common.title') }}</p>
-                        {{ Form::open(array('route' => 'page.index', 'method' => 'get')) }}
+                        {{ Form::open(array('route' => 'post.index', 'method' => 'get')) }}
                         {{ Form::text('title', null, array('class' => 'form-control')) }}
                     </div>
                     <div class="col-lg-3 col-12 mb-10">
@@ -21,48 +21,46 @@
                 <table class="table table-bordered data-table data-table-default">
                     <thead>
                         <tr>
-                            <th>{{ __('common.serial') }}</th>
                             <th>{{ __('common.id') }}</th>
                             <th>{{ __('common.title') }}</th>
                             <th>{{ __('common.status') }}</th>
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach($pages as $page)
+                        @foreach($posts as $post)
                         <tr>
-                            <td>{{ $page->order }}</td>
-                            <td>{{ $page->id }}</td> 
+                            <td>{{ $post->id }}</td> 
                             <td>
-                                <a href="#">{{ $page->title }}</a>
+                                <a href="#">{{ $post->title }}</a>
                                 <div style="clear: both;text-align: right;padding-top: 10px">
-                                    <a href="{{ route('page.show', $page->id) }}"><i class="fa fa-file-text-o" aria-hidden="true"></i> {{ __('common.view') }}</a>|
-                                    <a href="{{ route('page.edit', $page->id) }}"><i class="fa fa-edit" aria-hidden="true"></i> {{ __('common.edit') }}</a>|
-                                    <a href="{{ route('page.dropOrPublish', [$page->id, $page->status]) }}"><i class="fa fa-times-circle-o" aria-hidden="true"></i> @if($page->status == '0') {{ __('common.publish') }} @else {{ __('common.drop') }} @endif </a>|
-                                    <a href="#" data-toggle="modal" data-target="#deleteModalId_{{ $page->id }}" ><i class="fa fa-trash-o" aria-hidden="true"></i> {{ __('common.delete') }}</a>
+                                    <a href="{{ route('post.show', $post->id) }}"><i class="fa fa-file-text-o" aria-hidden="true"></i> {{ __('common.view') }}</a>|
+                                    <a href="{{ route('post.edit', $post->id) }}"><i class="fa fa-edit" aria-hidden="true"></i> {{ __('common.edit') }}</a>|
+                                    <a href="{{ route('post.dropOrPublish', [$post->id, $post->status]) }}"><i class="fa fa-times-circle-o" aria-hidden="true"></i> @if($post->status == '0') {{ __('common.publish') }} @else {{ __('common.drop') }} @endif </a>|
+                                    <a href="#" data-toggle="modal" data-target="#deleteModalId_{{ $post->id }}" ><i class="fa fa-trash-o" aria-hidden="true"></i> {{ __('common.delete') }}</a>
                                 </div>
                             </td>
                             <td>
                                 @foreach(STATUS_BY_ID as $key => $value)
-                                    @if ($page->status == $key)
+                                    @if ($post->status == $key)
                                         {{ $value }}
                                     @endif
                                 @endforeach
                             </td>
                         </tr>
                         <!-- Modal -->
-                        <div class="modal fade" id="deleteModalId_{{ $page->id }}">
+                        <div class="modal fade" id="deleteModalId_{{ $post->id }}">
                             <div class="modal-dialog modal-dialog-centered">
                                 <div class="modal-content">
                                     <div class="modal-header">
-                                        <h5 class="modal-title">{{ __('common.comfirm') . ' ' . __('common.delete') . ' ' . __('common.page') }}</h5>
+                                        <h5 class="modal-title">{{ __('common.comfirm') . ' ' . __('common.delete') . ' ' . __('common.post') }}</h5>
                                         <button class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span></button>
                                     </div>
                                     <div class="modal-body">
-                                        <p style="text-align: left;">{{ __('common.comfirm') . ' ' . __('common.delete') . ' ' . __('common.page') }}: {{ $page->title }}</p>
+                                        <p style="text-align: left;">{{ __('common.comfirm') . ' ' . __('common.delete') . ' ' . __('common.post') }}: {{ $post->title }}</p>
                                     </div>
                                     <div class="modal-footer">
                                         <button class="button button-danger" data-dismiss="modal">{{ __('common.close') }}</button>
-                                        <a href="{{ route('page.destroy', $page->id) }}" class="button button-primary">{{ __('common.delete') }}</a>
+                                        <a href="{{ route('post.destroy', $post->id) }}" class="button button-primary">{{ __('common.delete') }}</a>
                                     </div>
                                 </div>
                             </div>

@@ -20,10 +20,10 @@ class PageController extends Controller
      * @return \Illuminate\Http\Response
      */
     
-    public function index()
+    public function index(Request $request)
     {
         $title = __('common.list') . ' ' . __('common.page');
-        $pages = $this->page->orderBy('order')->get();
+        $pages = Page::query()->title($request)->orderBy('order')->get();
 
         return view(PAGE_VIEW_INDEX, compact('title', 'pages'));
     }
@@ -51,11 +51,11 @@ class PageController extends Controller
         $validate = $request->validate();
         $data = $request->all();
         if (is_null($validate)) {
-            $this->page->title = $request->title;
-            $this->page->slug = $request->slug;
-            $this->page->content = $request->content;
-            $this->page->order = $request->order;
-            $this->page->status = $request->status;
+            $this->page->title = $request->input('title');
+            $this->page->slug = $request->input('slug');
+            $this->page->content = $request->input('content');
+            $this->page->order = $request->input('order');
+            $this->page->status = $request->input('status');
             $this->page->save();
         }
 
@@ -122,5 +122,17 @@ class PageController extends Controller
         $page->delete();
 
         return redirect()->route('page.index');
+    }
+
+    public function dropOrPublish($id, $status)
+    {
+        if ($status == '0') {
+            $this->page->where('id', $id)->update(array('status' => '1'));
+        }
+        else {
+            $this->page->where('id', $id)->update(array('status' => '0'));
+        }
+        return redirect()->route('page.index');
+
     }
 }

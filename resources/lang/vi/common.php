@@ -42,4 +42,8 @@ return [
     'view' => 'xem',
     'comfirm' => 'Xác nhận',
     'close' => 'Đóng',
+    'slug' => 'Slug',
+    'post' => 'Bài viết',
+    'publish' => 'Đăng',
+    'drop' => 'Hạ',
 ];

@@ -39,6 +39,14 @@ Route::prefix('admin')->group(function() {
     Route::get('/page/edit/{id}', 'PageController@edit')->name('page.edit')->middleware(['locale', 'auth']);
     Route::put('/page/update/{id}', 'PageController@update')->name('page.update')->middleware(['locale', 'auth']);
     Route::get('/page/destroy/{id}', 'PageController@destroy')->name('page.destroy')->middleware(['locale', 'auth']);
-    // Route::resource('/page', 'PageController')->middleware(['locale', 'auth']);
+    Route::get('/page/dropOrPublish/{id}/{status}', 'PostController@dropOrPublish')->name('page.dropOrPublish')->middleware(['locale', 'auth']);
+    Route::get('/post/index', 'PostController@index')->name('post.index')->middleware(['locale', 'auth']);
+    Route::get('/post/create', 'PostController@create')->name('post.create')->middleware(['locale', 'auth']);
+    Route::post('/post/store', 'PostController@store')->name('post.store')->middleware(['locale', 'auth']);
+    Route::get('/post/detail/{id}', 'PostController@show')->name('post.show')->middleware(['locale', 'auth']);
+    Route::get('/post/edit/{id}', 'PostController@edit')->name('post.edit')->middleware(['locale', 'auth']);
+    Route::put('/post/update/{id}', 'PostController@update')->name('post.update')->middleware(['locale', 'auth']);
+    Route::get('/post/destroy/{id}', 'PostController@destroy')->name('post.destroy')->middleware(['locale', 'auth']);
+    Route::get('/post/dropOrPublish/{id}/{status}', 'PostController@dropOrPublish')->name('post.dropOrPublish')->middleware(['locale', 'auth']);
 });
 Route::get('get-province', 'CrawlerProvince@getProvince')->name('province.crawler');
