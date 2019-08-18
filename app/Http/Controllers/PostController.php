@@ -24,9 +24,13 @@ class PostController extends Controller
     public function index(PostRequest $request)
     {
         $title = __('common.list') . ' ' . __('common.post');
-        $posts = Post::query()->title($request)->get();
-
-        return view(POST_VIEW_INDEX, compact('title', 'posts'));
+        $data = Post::query()
+                    ->title($request)
+                    ->category($request)
+                    ->created($request);
+        $posts = $data->get();
+        $category = Category::pluck('title', 'id');
+        return view(POST_VIEW_INDEX, compact('title', 'posts', 'category'));
     }
 
     /**

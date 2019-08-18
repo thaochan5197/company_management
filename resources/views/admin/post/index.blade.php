@@ -5,17 +5,27 @@
     <div class="col-12 mb-20">        
         <div class="box">
             <div class="box-head">
+                {{ Form::open(array('route' => 'post.index', 'method' => 'get')) }}
                 <div class="row">
+
                     <div class="col-lg-3 col-12 mb-10">
                         <p class="mb-5">{{ __('common.title') }}</p>
-                        {{ Form::open(array('route' => 'post.index', 'method' => 'get')) }}
                         {{ Form::text('title', null, array('class' => 'form-control')) }}
                     </div>
                     <div class="col-lg-3 col-12 mb-10">
-                        {{ Form::submit(__('common.search'), array('class' => 'button button-primary mb-15 ml-10 mr-0', 'style' => 'margin-top: 35px')) }}
-                        {{ Form::close() }}
+                        <p class="mb-5">{{ __('common.category') }}</p>
+                        {{ Form::select('category', $category, null, array('class' => 'form-control')) }}
                     </div>
+                    <div class="col-lg-3 col-12 mb-10">
+                        <p class="mb-5">{{ __('post.created_date') }}</p>
+                        {{ Form::text('created_at', null, array('class' => 'form-control input-date-single')) }}
+                    </div>
+                    <div class="col-lg-3 col-12 mb-10">
+                        {{ Form::submit(__('common.search'), array('class' => 'button button-primary mb-15 ml-10 mr-0', 'style' => 'margin-top: 35px')) }}
+                    </div>
+                    
                 </div>
+                {{ Form::close() }}
             </div>
             <div class="box-body">
                 <table class="table table-bordered data-table data-table-default">
@@ -23,7 +33,9 @@
                         <tr>
                             <th>{{ __('common.id') }}</th>
                             <th>{{ __('common.title') }}</th>
+                            <th>{{ __('common.category') }}</th>
                             <th>{{ __('common.status') }}</th>
+                            <th>{{ __('post.created_date') }}</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -40,11 +52,17 @@
                                 </div>
                             </td>
                             <td>
+                                {{ $post->category->title }}
+                            </td>
+                            <td>
                                 @foreach(STATUS_BY_ID as $key => $value)
                                     @if ($post->status == $key)
                                         {{ $value }}
                                     @endif
                                 @endforeach
+                            </td>
+                            <td>
+                                {{ date($post->created_at) }}
                             </td>
                         </tr>
                         <!-- Modal -->

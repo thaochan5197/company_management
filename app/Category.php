@@ -18,6 +18,13 @@ class Category extends Model
      * @var bool
      */
     public $timestamps = true;
+    /**
+     * Get the post for the category
+     */
+    public function posts()
+    {
+        return $this->hasMany('App\Post');
+    }
     
     /**
      * @param array $where
