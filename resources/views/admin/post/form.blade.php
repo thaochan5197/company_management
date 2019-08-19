@@ -44,7 +44,7 @@
                         <h6 class="mb-15">{{ __('common.category') }} (<span style="color: red">*</span>)</h6>
                         <div class="row mbn-15">
                             <div class="col-12 mb-15">
-                                {{ Form::select('category', $category, Input::old('slug'), ['class' => 'form-control']) }}
+                                {{ Form::select('category_id', $category, Input::old('slug'), ['class' => 'form-control']) }}
                             </div>
                         </div>
                     </div>

@@ -127,10 +127,10 @@ class PageController extends Controller
     public function dropOrPublish($id, $status)
     {
         if ($status == '0') {
-            $this->page->where('id', $id)->update(array('status' => '1'));
+            $post = $this->post->where('id', $id)->update(array('status' => STATUS['public']));
         }
         else {
-            $this->page->where('id', $id)->update(array('status' => '0'));
+            $post = $this->post->where('id', $id)->update(array('status' => STATUS['draft']));
         }
         return redirect()->route('page.index');
 

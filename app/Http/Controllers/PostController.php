@@ -24,12 +24,12 @@ class PostController extends Controller
     public function index(PostRequest $request)
     {
         $title = __('common.list') . ' ' . __('common.post');
-        $data = Post::query()
+        $data = $this->post->query()
                     ->title($request)
                     ->category($request)
                     ->created($request);
         $posts = $data->get();
-        $category = Category::pluck('title', 'id');
+        $category = Category::where('type', TYPE_CATEGORY['news'])->pluck('title', 'id');
         return view(POST_VIEW_INDEX, compact('title', 'posts', 'category'));
     }
 
@@ -41,7 +41,7 @@ class PostController extends Controller
     public function create()
     {
         $title = __('common.add') . ' ' . __('common.post');
-        $category = Category::pluck('title', 'id');
+        $category = Category::where('type', TYPE_CATEGORY['news'])->pluck('title', 'id');
 
         return view(POST_VIEW_FORM, compact('title', 'category'));
     }
@@ -93,7 +93,7 @@ class PostController extends Controller
     {
         $title = __('common.edit') . ' ' . __('common.post');
         $post = $this->post->find($id);
-        $category = Category::pluck('title', 'id');
+        $category = Category::where('type', TYPE_CATEGORY['news'])->pluck('title', 'id');
 
         return view(POST_VIEW_FORM, compact('title', 'post', 'category'));
     }
@@ -109,7 +109,6 @@ class PostController extends Controller
     {
         $data = $request->all();
         $validate = $request->validate();
-        // var_dump($data);die;
         if (is_null($validate)) {
             $post = $this->post->findOrFail($id);
             $post->update($data);
@@ -135,10 +134,10 @@ class PostController extends Controller
     public function dropOrPublish($id, $status)
     {
         if ($status == '0') {
-            $post = $this->post->where('id', $id)->update(array('status' => '1'));
+            $post = $this->post->where('id', $id)->update(array('status' => STATUS['public']));
         }
         else {
-            $post = $this->post->where('id', $id)->update(array('status' => '0'));
+            $post = $this->post->where('id', $id)->update(array('status' => STATUS['draft']));
         }
         return redirect()->route('post.index');
 

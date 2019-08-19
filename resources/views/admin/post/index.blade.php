@@ -10,15 +10,15 @@
 
                     <div class="col-lg-3 col-12 mb-10">
                         <p class="mb-5">{{ __('common.title') }}</p>
-                        {{ Form::text('title', null, array('class' => 'form-control')) }}
+                        {{ Form::text('title', Input::old('title'), array('class' => 'form-control')) }}
                     </div>
                     <div class="col-lg-3 col-12 mb-10">
                         <p class="mb-5">{{ __('common.category') }}</p>
-                        {{ Form::select('category', $category, null, array('class' => 'form-control')) }}
+                        {{ Form::select('category', $category, Input::old('category'), array('class' => 'form-control')) }}
                     </div>
                     <div class="col-lg-3 col-12 mb-10">
                         <p class="mb-5">{{ __('post.created_date') }}</p>
-                        {{ Form::text('created_at', null, array('class' => 'form-control input-date-single')) }}
+                        {{ Form::text('created_at', Input::old('created_at'), array('class' => 'form-control input-date-single')) }}
                     </div>
                     <div class="col-lg-3 col-12 mb-10">
                         {{ Form::submit(__('common.search'), array('class' => 'button button-primary mb-15 ml-10 mr-0', 'style' => 'margin-top: 35px')) }}
