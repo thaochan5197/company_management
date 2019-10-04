@@ -177,7 +177,7 @@ function getAgency(e) {
         dataType : 'json',
         success : function(res) {
 
-            var select = '<option value='0'>Cấp cao nhất</option>';
+            var select = '<option value="0">Cấp cao nhất</option>';
 
             $.each(res, function(index, value){
 
