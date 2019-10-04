@@ -262,36 +262,24 @@
 
         <nav class="side-header-menu" id="side-header-menu">
             <ul>
-                <li><a href="{{ route('home') }}"><i class="ti-home"></i> <span>{{ __('header.dashboard.index') }}</span></a></li>
-                <li class="has-sub-menu"><a href="#"><i class="ti-package"></i> <span>{{ __('common.realty_post') }}</span></a>
+                <li><a href="{{ route('home') }}"><i class="ti-home"></i> <span>Dashboard</span></a></li>
+                <li class="has-sub-menu"><a href="#"><i class="fa fa-product-hunt"></i> <span>Chi nhánh</span></a>
                     <ul class="side-header-sub-menu">
-                        <li><a href="{{ route('realty_post.add') }}"><span>{{ __('common.add') }}</span></a></li>
+                        <li><a href="{{ route('agency.create') }}"><span>Khơi tạo</span></a></li>
+                        <li><a href="{{ route('agency.index') }}"><span>Danh sách</span></a></li>
                     </ul>
                 </li>
-                <li class="has-sub-menu"><a href="#"><i class="fa fa-product-hunt"></i> <span>{{ __('common.project') }}</span></a>
+                <li class="has-sub-menu"><a href="#"><i class="fa fa-list"></i> <span>Chức vụ</span></a>
                     <ul class="side-header-sub-menu">
-                        <li><a href="{{ route('project.add.show') }}"><span>{{ __('common.add') }}</span></a></li>
-                        <li><a href="{{ route('project.list') }}"><span>{{ __('common.list') }}</span></a></li>
-                    </ul>
-                </li>
-                <li class="has-sub-menu"><a href="#"><i class="fa fa-list"></i> <span>{{ __('common.category') }}</span></a>
-                    <ul class="side-header-sub-menu">
-                        <li><a href="{{ route('category.add.show') }}"><span>{{ __('common.add') }}</span></a></li>
-                        <li><a href="{{ route('category.list') }}"><span>{{ __('common.list') }}</span></a></li>
+                        <li><a href="{{ route('position.create') }}"><span>Khơi tạo</span></a></li>
+                        <li><a href="{{ route('position.index') }}"><span>Danh sách</span></a></li>
                     </ul>
                 </li>
                 <li class="has-sub-menu">
-                    <a href="#"><i class="fa fa-list"></i> <span>{{ __('common.page') }}</span></a>
+                    <a href="#"><i class="fa fa-list"></i> <span>Thông tin nhân viên</span></a>
                     <ul class="side-header-sub-menu">
-                        <li><a href="{{ route('page.index') }}"><span>{{ __('common.list') }}</span></a></li>
-                        <li><a href="{{ route('page.create') }}"><span>{{ __('common.add') }}</span></a></li>
-                    </ul>
-                </li>
-                <li class="has-sub-menu">
-                    <a href="#"><i class="fa fa-list"></i> <span>{{ __('post.post') }}</span></a>
-                    <ul class="side-header-sub-menu">
-                        <li><a href="{{ route('post.index') }}"><span>{{ __('common.list') }}</span></a></li>
-                        <li><a href="{{ route('post.create') }}"><span>{{ __('common.add') }}</span></a></li>
+                        <li><a href="{{ route('employee.create') }}"><span>Khơi tạo</span></a></li>
+                        <li><a href="{{ route('employee.index') }}"><span>Danh sách</span></a></li>
                     </ul>
                 </li>
             </ul>

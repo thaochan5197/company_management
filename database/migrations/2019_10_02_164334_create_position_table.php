@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateTableProvince extends Migration
+class CreatePositionTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,11 @@ class CreateTableProvince extends Migration
      */
     public function up()
     {
-        Schema::create('province', function (Blueprint $table) {
+        Schema::create('position', function (Blueprint $table) {
             $table->increments('id');
             $table->text('name');
-            $table->integer('status');
-            $table->integer('parent_id');
-            $table->integer('type');
-            $table->integer('zip_code');
+            $table->tinyInteger('manager_id')->nullable()->default(0);
+
             $table->timestamps();
         });
     }
@@ -31,6 +29,6 @@ class CreateTableProvince extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('province');
+        Schema::dropIfExists('position');
     }
 }

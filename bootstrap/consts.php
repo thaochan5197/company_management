@@ -17,6 +17,17 @@ const PAGE_VIEW_FORM = ADMIN_PREFIX . '.page.form';
 const PAGE_VIEW_INDEX = ADMIN_PREFIX . '.page.index';
 const PAGE_VIEW_DETAIL = ADMIN_PREFIX . '.page.detail';
 
+// view position
+const POSITION_VIEW_FORM = ADMIN_PREFIX . '.position.form';
+const POSITION_VIEW_INDEX = ADMIN_PREFIX . '.position.index';
+const POSITION_VIEW_DETAIL = ADMIN_PREFIX . '.position.detail';
+
+// view employee
+const EMPLOYEE_VIEW_FORM = ADMIN_PREFIX . '.employee.form';
+const EMPLOYEE_VIEW_INDEX = ADMIN_PREFIX . '.employee.index';
+const EMPLOYEE_VIEW_DETAIL = ADMIN_PREFIX . '.employee.detail';
+
+
 // view post
 const POST_VIEW_FORM = ADMIN_PREFIX . '.post.form';
 const POST_VIEW_INDEX = ADMIN_PREFIX . '.post.index';

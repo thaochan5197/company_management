@@ -23,7 +23,7 @@
                     <div class="col-lg-3 col-12 mb-10">
                         {{ Form::submit(__('common.search'), array('class' => 'button button-primary mb-15 ml-10 mr-0', 'style' => 'margin-top: 35px')) }}
                     </div>
-                    
+
                 </div>
                 {{ Form::close() }}
             </div>

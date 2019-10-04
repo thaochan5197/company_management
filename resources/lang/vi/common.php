@@ -46,4 +46,10 @@ return [
     'post' => 'Bài viết',
     'publish' => 'Đăng',
     'drop' => 'Hạ',
+
+    'position' => 'Chức vụ',
+    'employee' => 'Thông tin nhân viên',
+    'agency' => 'Chi nhánh',
+    'mail' => 'Email',
+    'phone' => 'SĐT'
 ];
