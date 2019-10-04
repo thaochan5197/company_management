@@ -232,7 +232,7 @@
                                                 document.getElementById('logout').submit();
                                             "><i class="zmdi zmdi-lock-open"></i>Sing out</a></li>
                                         </ul>
-                                        <form action="{{ route('logout') }}" method="post" id="logout">
+                                        <form action="" method="" id="logout">
                                             {{ csrf_field() }}
                                         </form>
                                         <ul>
