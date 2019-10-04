@@ -169,7 +169,6 @@ function getAgency(e) {
     var id = e.value;
     let url = $(e).data('url');
 
-    alert(suitableManager);
     $.ajax({
         url: url,
         method:"GET",
