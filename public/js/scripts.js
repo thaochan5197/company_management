@@ -148,6 +148,7 @@ $('select').on('change', function (e) {
 });
 
 let suitableManager = '';
+let position = '';
 function getPosition(e) {
     var id = e.value;
     let url = $(e).data('url');
@@ -159,7 +160,7 @@ function getPosition(e) {
         dataType : 'json',
         success : function(res) {
             suitableManager = res;
-            console.log(suitableManager);
+
         }
     });
 }
@@ -168,21 +169,20 @@ function getAgency(e) {
     var id = e.value;
     let url = $(e).data('url');
 
-    alert(suitableManager);
     $.ajax({
         url: url,
         method:"GET",
         data : {id : id, manager : suitableManager},
         dataType : 'json',
         success : function(res) {
-            alert(res);
-            var select = '';
+
+            var select = '<option value="0">Cấp cao nhất</option>';
 
             $.each(res, function(index, value){
 
                 select += '<option value='+value['id']+'>'+value['name']+'</option>'
             });
-            console.log(res);
+
             $("#manager_id").html(select);
         }
     });

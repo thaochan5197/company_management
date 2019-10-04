@@ -116,13 +116,12 @@ class EmployeesController extends Controller
     public function update(Request $request, $id)
     {
         $data = $request->all();
-        // $validate = $request->validate();
-        // if (is_null($validate)) {
-            $employee = $this->employee->findOrFail($id);
-            $employee->update($data);
+        
+        $employee = $this->employee->findOrFail($id);
+        $employee->update($data);
 
-            return redirect()->route('employee.index');
-        // }
+        return redirect()->route('employee.index');
+ 
     }
 
     /**

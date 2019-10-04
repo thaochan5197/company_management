@@ -50,26 +50,18 @@ class PositionController extends Controller
      */
     public function store(Request $request)
     {
-        // $validate = $request->validates();
-        // $data = $request->all();
-        // if (is_null($validate)) {
-            $array = [];
-            $array['name'] = $request->input('name');
-            $array['manager_id'] = $request->input('manager_id');
-            // var_dump($array['name']);die;
-            for ($count = 0; $count < count($array['name']); $count++) {
-                $data = [];
-                $data['name'] = $array['name'][$count];
-                $data['manager_id'] = $array['manager_id'][$count];
-                $this->position->insert($data);
-            }
-            // var_dump($positions);die;
-            // $this->position->name = $request->input('name');
-            // $this->position->manager_id = $request->input('manager_id');
-
-            // $this->position->save();
-        // }
-
+    
+        $array = [];
+        $array['name'] = $request->input('name');
+        $array['manager_id'] = $request->input('manager_id');
+        
+        for ($count = 0; $count < count($array['name']); $count++) {
+            $data = [];
+            $data['name'] = $array['name'][$count];
+            $data['manager_id'] = $array['manager_id'][$count];
+            $this->position->insert($data);
+        }
+        
         return redirect()->route('position.index');
     }
 
@@ -108,13 +100,10 @@ class PositionController extends Controller
     public function update(Request $request, $id)
     {
         $data = $request->all();
-        // $validate = $request->validate();
-        // if (is_null($validate)) {
-            $position = $this->position->findOrFail($id);
-            $position->update($data);
+        $position = $this->position->findOrFail($id);
+        $position->update($data);
 
-            return redirect()->route('position.index');
-        // }
+        return redirect()->route('position.index');
     }
 
     /**
